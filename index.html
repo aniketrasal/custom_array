@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+    function myarr() {
+
+        Object.defineProperty(this, "length", {
+
+            value: 0,
+            writable: true,
+            enumerable: false,
+        })
+
+        this.length = arguments.length;
+
+        for (let i = 0; i < arguments.length; i++) {
+            this[i] = arguments[i]
+        }
+
+    }
+
+    let arr = new myarr(1,2,3,4)
+    //console.log(Object.values(arr))
+
+    myarr.prototype.push = function (value) {
+        this[this.length] = value;
+        this.length++
+    }
+
+    myarr.prototype.pop = function () {
+        delete this[this.length - 1]
+        this.length--
+    }
+
+    myarr.prototype.top = function () {
+         let index = this.length-1
+         console.log(this[index])
+
+    }
+
+    myarr.prototype.print = function () {
+        console.log(Object.values(this))
+    }
+
+    myarr.prototype.printreverse = function () {
+        let reverse = []
+        for (let i = this.length - 1; i >= 0; i--) {
+            reverse.push(this[i]);   
+        }
+        console.log(Object.values(reverse))
+    }
+
+
+    myarr.prototype.sizeofarr = function () {
+        console.log(this.length)
+    }
+
+
+    arr.push(5)
+    console.log(Object.values(arr))
+    
+
+    arr.pop()
+    console.log(Object.values(arr))
+
+    arr.top()
+    
+    arr.print()
+
+    arr.printreverse()
+
+    arr.sizeofarr()
+
+
+
+
+</script>
